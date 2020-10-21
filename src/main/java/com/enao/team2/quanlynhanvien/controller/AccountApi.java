@@ -2,19 +2,20 @@ package com.enao.team2.quanlynhanvien.controller;
 
 
 import com.enao.team2.quanlynhanvien.model.Account;
+import com.enao.team2.quanlynhanvien.model.Hocsinh;
 import com.enao.team2.quanlynhanvien.model.Token;
+import com.enao.team2.quanlynhanvien.repository.AccountRepository;
+import com.enao.team2.quanlynhanvien.repository.HocSinhRepository;
 import com.enao.team2.quanlynhanvien.security.JwtUtil;
 import com.enao.team2.quanlynhanvien.security.UserPrincipal;
 import com.enao.team2.quanlynhanvien.service.AccountService;
 import com.enao.team2.quanlynhanvien.service.TokenService;
+import demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -24,6 +25,11 @@ public class AccountApi {
 
         @Autowired
         private TokenService tokenService;
+
+        @Autowired
+        private AccountRepository accountRepository;
+        @Autowired
+        private HocSinhRepository hocSinhRepository;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -47,4 +53,12 @@ public class AccountApi {
         account.setPass(new BCryptPasswordEncoder().encode(account.getPass()));
         return accountService.createUser(account);
     }
+
+    @GetMapping("/acc/{mahocsinh}")
+    public ResponseEntity<Hocsinh> getAHocsinh(@PathVariable(value = "mahocsinh") String mahocsinh)
+            throws ResourceNotFoundException {
+        Hocsinh hs = hocSinhRepository.finrBymhs(mahocsinh);
+        return ResponseEntity.ok().body(hs);
+    }
+
 }
