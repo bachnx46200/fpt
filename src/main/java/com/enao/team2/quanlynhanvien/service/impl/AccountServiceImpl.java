@@ -5,10 +5,11 @@ import com.enao.team2.quanlynhanvien.repository.AccountRepository;
 import com.enao.team2.quanlynhanvien.security.UserPrincipal;
 import com.enao.team2.quanlynhanvien.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class AccountServiceImpl implements AccountService {
 @Autowired
 private AccountRepository accountRepository;
