@@ -10,7 +10,7 @@ import java.util.*;
 
 @Repository
 public interface IDiemRepository extends JpaRepository<Diem, Integer> {
-    @Query(value = "SELECT new com.enao.team2.quanlynhanvien.DTOs.diemDTO(hocsinh.mahocsinh, hocsinh.hoten, hocsinh.gioitinh, diemMieng1, diemMieng2, diemMieng3, diem15phut1, diem15phut2, diem15phut3, diem1Tiet1, diem1Tiet2, diemthi, diemTBM FROM diem inner join hocsinh on diem.mahocsinh = hocsinh.mahocsinh inner join phancong on diem.mapc = phancong.mapc inner join mon on phancong.mamon = mon.mamon INNER JOIN lophoc on phancong.malop = lophoc.malop where lophoc.tenlop = ?1 and mon.tenmon = ?2 and phancong.hocki = ?3", nativeQuery = true)
+    @Query(value = "SELECT hs.mahocsinh, hs.hoten, hs.ten, d.diemMieng1, d.diemMieng2, d.diemMieng3, d.diem15phut1, d.diem15phut2, d.diem15phut3, d.diem1Tiet1, d.diem1Tiet2, d.diemthi, d.diemTBM FROM diem d inner join hocsinh hs on d.mahocsinh = hs.mahocsinh inner join phancong pc on d.mapc = pc.mapc inner join mon m on pc.mamon = m.mamon INNER JOIN lophoc lh on pc.malop = lh.malop where lh.tenlop = ?1 and m.tenmon = ?2 and pc.hocki = ?3", nativeQuery = true)
     List<diemDTO> listByTenlopTenMonandPhancong(String tenlop, String tenmon, boolean hocki);
 
 //    List<Diem> findByStudentID(String id);
