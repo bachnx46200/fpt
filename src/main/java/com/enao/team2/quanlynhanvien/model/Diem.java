@@ -17,46 +17,46 @@ import java.util.Date;
 public class Diem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int stt;
+    private Integer stt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column()
+    @Column
     private Date ngay;
 
-    @Column()
+    @Column
     private String mahocsinh;
 
-    @Column()
+    @Column
     private int diemmieng1;
 
-    @Column()
+    @Column
     private int diemmieng2;
 
-    @Column()
+    @Column
     private int diemmieng3;
 
-    @Column()
+    @Column
     private int diem15phut1;
 
-    @Column()
+    @Column
     private int diem15phut2;
 
-    @Column()
+    @Column
     private int diem15phut3;
 
-    @Column()
+    @Column
     private float diem1tiet1;
 
-    @Column()
+    @Column
     private float diem1tiet2;
 
-    @Column()
+    @Column
     private float diemthi;
 
-    @Column()
-    private float diemtbm;
+    @Column
+    private float diemTBM;
 
-    @Column()
+    @Column
     private String mapc;
 
 }
