@@ -1,6 +1,5 @@
 package com.enao.team2.quanlynhanvien.controller;
 
-import com.enao.team2.quanlynhanvien.DTOs.diemDTO;
 import com.enao.team2.quanlynhanvien.model.Diem;
 import com.enao.team2.quanlynhanvien.service.IDiemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,13 @@ public class DiemController {
     public ResponseEntity<?> getbythem(@RequestParam(value = "tenlop", required = false)String tenlop,
                                        @RequestParam(value = "tenmon", required = false)String tenmon,
                                         @RequestParam(value = "hocki", required = false)boolean ki){
-        List<diemDTO> list = diemService.findByEVE(tenlop, tenmon, ki);
+        List<Diem> list = diemService.findByEVE(tenlop, tenmon, ki);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-//    @GetMapping("/getByStudentId")
-//    ResponseEntity<?> getBy(@PathVariable String id){
-//        List<Diem> list = diemService.findByStudetID(id);
-//        return new ResponseEntity<>(list, HttpStatus.OK);
-//    }
+    @GetMapping("/getByStudentId")
+    ResponseEntity<?> getBy(@PathVariable String id, @RequestParam(value = "hocki", required = false)boolean ki){
+        List<Diem> list = diemService.findByStudetID(id, ki);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 }

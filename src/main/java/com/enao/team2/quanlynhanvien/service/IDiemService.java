@@ -8,7 +8,7 @@ import java.util.List;
 public interface IDiemService {
     List<Diem> findAll();
 
-//    List<Diem> findByStudetID(String id);
+    List<Diem> findByStudetID(String id, boolean hocki);
 
-    List<diemDTO> findByEVE(String tenlop, String tenmon, boolean hocki);
+    List<Diem> findByEVE(String tenlop, String tenmon, boolean hocki);
 }

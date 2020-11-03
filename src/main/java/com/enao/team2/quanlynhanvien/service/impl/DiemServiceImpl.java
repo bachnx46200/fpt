@@ -20,13 +20,13 @@ public class DiemServiceImpl implements IDiemService {
         return diemRepository.findAll();
     }
 
-//    @Override
-//    public List<Diem> findByStudetID(String id) {
-//        return diemRepository.findByStudentID(id);
-//    }
+    @Override
+    public List<Diem> findByStudetID(String id, boolean hocki) {
+        return diemRepository.findBymahocsinh(id, hocki);
+    }
 
     @Override
-    public List<diemDTO> findByEVE(String tenlop, String tenmon, boolean hocki) {
+    public List<Diem> findByEVE(String tenlop, String tenmon, boolean hocki) {
         return diemRepository.listByTenlopTenMonandPhancong(tenlop, tenmon, hocki);
     }
 }
