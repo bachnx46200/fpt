@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface IDiemRepository extends JpaRepository<Diem, Integer> {
+public interface IDiemRepository extends JpaRepository<Diem, UUID> {
     @Query(value = "SELECT * FROM diem d inner join hocsinh hs on d.mahocsinh = hs.mahocsinh inner join phancong pc on d.mapc = pc.mapc inner join mon m on pc.mamon = m.mamon INNER JOIN lophoc lh on pc.malop = lh.malop where lh.tenlop = ?1 and m.tenmon = ?2 and pc.hocki = ?3", nativeQuery = true)
     List<Diem> listByTenlopTenMonandPhancong(String tenlop, String tenmon, boolean hocki);
 

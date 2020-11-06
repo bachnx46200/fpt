@@ -31,7 +31,7 @@ public class DiemController {
     }
 
     @GetMapping("/getByStudentId")
-    ResponseEntity<?> getBy(@PathVariable String id, @RequestParam(value = "hocki", required = false)boolean ki){
+    ResponseEntity<?> getBy( @RequestParam(value = "id", required = false)String id, @RequestParam(value = "hocki", required = false)boolean ki){
         List<Diem> list = diemService.findByStudetID(id, ki);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }

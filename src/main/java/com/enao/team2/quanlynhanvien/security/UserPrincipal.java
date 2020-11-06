@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,8 +14,8 @@ public class UserPrincipal implements UserDetails {
     private String username;
     private String password;
     private String roles;
-    private String mahocsinh;
-    private String magiaovien;
+    private UUID mahocsinh;
+    private UUID magiaovien;
     private Collection authorities;
 
     @Override

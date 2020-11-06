@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "diem")
@@ -16,15 +17,15 @@ import java.util.Date;
 @AllArgsConstructor
 public class Diem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer stt;
+    @Column(unique = true)
+    private UUID id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column
     private Date ngay;
 
-    @Column
-    private String mahocsinh;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Hocsinh hocsinh;
 
     @Column
     private int diemmieng1;
@@ -56,7 +57,7 @@ public class Diem {
     @Column
     private float diemTBM;
 
-    @Column
-    private String mapc;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private PhanCong phancong;
 
 }

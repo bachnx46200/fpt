@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
-public interface AccountRepository extends JpaRepository<Account,Integer> {
+public interface AccountRepository extends JpaRepository<Account,Long> {
 
     @Query(value="SELECT * FROM account u WHERE  u.email=?1",nativeQuery = true)
      Account findByUsername(String username);

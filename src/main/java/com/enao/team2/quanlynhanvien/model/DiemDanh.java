@@ -6,30 +6,37 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
-@Table(name = "account")
+@Table(name = "diemdanh")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
+public class DiemDanh {
+
     @Id
+    @Column(unique = true)
+    private UUID id;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column
-    private long stt;
+    private Date ngay;
+
     @Column
-    private String email;
+    private boolean trangthai;
+
     @Column
-    private String pass;
-    @Column
-    private String roles;
+    private boolean hocki;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Hocsinh hocsinh;
+    private NamHoc namhoc;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private GiaoVien giaovien;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Hocsinh hocsinh;
 }

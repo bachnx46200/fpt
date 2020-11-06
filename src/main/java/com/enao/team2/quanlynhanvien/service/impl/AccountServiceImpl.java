@@ -26,8 +26,8 @@ private AccountRepository accountRepository;
             userPrincipal.setUsername(account.getEmail());
             userPrincipal.setPassword(account.getPass());
             userPrincipal.setAuthorities(authorities);
-            userPrincipal.setMahocsinh(account.getMahocsinh());
-            userPrincipal.setMagiaovien(account.getMagiaovien());
+            userPrincipal.setMahocsinh(account.getHocsinh().getId());
+            userPrincipal.setMagiaovien(account.getGiaovien().getId());
         }
         return userPrincipal;
     }
